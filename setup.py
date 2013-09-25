@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='Pressdict',
-    version='0.0.1',
+    version='0.0.2',
     author='Tobias Guenther',
     author_email='pressdict@tobias.io',
     packages=['pressdict', 'pressdict.test'],
