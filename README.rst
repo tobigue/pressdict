@@ -18,6 +18,23 @@ Pressdict can mostly be used like a normal Python dict::
     print pd["test"]
 
 
+Important
+---------
+
+Remember that everything in the dict is stored as string and is therefor IMMUTABLE!! That means that THIS WILL NOT WORK::
+
+    pd["list"].append("item")
+    pd["dict"]["new_key"] = "value"
+
+Thus, changes to objects in the Pressdict have to be explicit::
+
+    pd["list"] = pd["list"] + ["item"]
+
+    d = pd["dict"]
+    d["new_key"] = "value"
+    pd["dict"] = d
+
+
 Tests
 =====
 
