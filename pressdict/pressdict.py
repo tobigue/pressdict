@@ -40,7 +40,10 @@ class Pressdict(object):
         return self.d.clear()
 
     def get(self, key, default=None):
-        return self.decompress(self.d.get(key, default))
+        if key in self:
+            return self[key]
+        else:
+            return default
 
     def items(self):
         return list(self.iteritems())
