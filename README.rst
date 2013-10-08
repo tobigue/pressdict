@@ -23,8 +23,8 @@ Important
 
 Remember that everything in the dict is stored as string and is therefor IMMUTABLE!! That means that THIS WILL NOT WORK::
 
-    pd["list"].append("item")
-    pd["dict"]["new_key"] = "value"
+    pd["list"].append("item")  # will not work!
+    pd["dict"]["new_key"] = "value"  # will not work!
 
 Thus, changes to objects in the Pressdict have to be explicit::
 
