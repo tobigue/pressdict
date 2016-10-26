@@ -38,7 +38,7 @@ Thus, changes to objects in the Pressdict have to be explicit::
 Lists
 -----
 
-NEW: Package now also includes a pressed list
+NEW: Package now also includes a pressed list::
 
     from pressdict import Presslist
     pl = Presslist()
