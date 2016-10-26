@@ -35,6 +35,19 @@ Thus, changes to objects in the Pressdict have to be explicit::
     pd["dict"] = d
 
 
+Lists
+-----
+
+NEW: Package now also includes a pressed list
+
+    from pressdict import Presslist
+    pl = Presslist()
+    pl.append({"key": "value", "key2": 2})
+    print pl[0]
+
+Note that the same restrictions apply as for Pressdicts: You can not modify a stored object directly. You need to retrieve the object, modify it and store it again.
+
+
 Tests
 =====
 

@@ -18,8 +18,6 @@ class PressdictTests(unittest.TestCase):
 
         self.assertEqual(len(pd), 1)
 
-        self.assertTrue(repr(pd))
-
         self.assertEqual(pd.get("test"), {"key": "value", "key2": 2})
         self.assertEqual(pd.get("asdf"), None)
         default = object()

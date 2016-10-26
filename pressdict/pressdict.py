@@ -32,10 +32,6 @@ class Pressdict(object):
     def __setitem__(self, key, value):
         self.d[key] = self.compress(value)
 
-    def __repr__(self):
-        return repr(dict((key, self.decompress(value))
-            for key, value in self.d.iteritems()))
-
     def clear(self):
         return self.d.clear()
 
