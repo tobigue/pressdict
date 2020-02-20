@@ -12,7 +12,5 @@ setup(
     classifiers=["Programming Language :: Python :: 3"],
     description=('Pressdict is a compressed key-value store '
                  'for JSON-serializable objects.'),
-    long_description=open('README.rst').read(),
-    install_requires=[
-    ]
+    long_description=open('README.rst').read()
 )
