@@ -22,4 +22,4 @@ v0.0.3 - 2016-10-26
 v1.0.0 - 2020-02-20
 -------------------
 
-* Switched to python3
+* Switched to python3 (thanks to @WladimirSidorenko)
