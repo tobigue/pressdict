@@ -9,31 +9,29 @@ class Pressdict(object):
     """Compressed key-value store for JSON-serializable objects."""
 
     def __init__(self):
-        self.d = {}
-        self.compress = lambda obj: zlib.compress(json.dumps(obj))
-        self.decompress = lambda string: json.loads(zlib.decompress(string))
+        self._d = {}
 
     def __iter__(self):
-        for key in self.d:
+        for key in self._d:
             yield key
 
     def __len__(self):
-        return len(self.d)
+        return len(self._d)
 
     def __contains__(self, key):
-        return key in self.d
+        return key in self._d
 
     def __getitem__(self, key):
-        return self.decompress(self.d[key])
+        return self.decompress(self._d[key])
 
     def __delitem__(self, key):
-        del self.d[key]
+        del self._d[key]
 
     def __setitem__(self, key, value):
-        self.d[key] = self.compress(value)
+        self._d[key] = self.compress(value)
 
     def clear(self):
-        return self.d.clear()
+        return self._d.clear()
 
     def get(self, key, default=None):
         if key in self:
@@ -42,31 +40,28 @@ class Pressdict(object):
             return default
 
     def items(self):
-        return list(self.iteritems())
-
-    def iteritems(self):
-        for key, value in self.d.iteritems():
+        for key, value in self._d.items():
             yield key, self.decompress(value)
 
-    def iterkeys(self):
-        for key in self.d.iterkeys():
+    def keys(self):
+        for key in self._d.keys():
             yield key
 
-    def itervalues(self):
-        for value in self.d.itervalues():
+    def values(self):
+        for value in self._d.values():
             yield self.decompress(value)
-
-    def keys(self):
-        return self.d.keys()
 
     def pop(self, key, default=sentinel):
         if default is sentinel:
-            return self.decompress(self.d.pop(key))
+            return self.decompress(self._d.pop(key))
         else:
             try:
-                return self.decompress(self.d.pop(key))
+                return self.decompress(self._d.pop(key))
             except KeyError:
                 return default
 
-    def values(self):
-        return list(self.itervalues())
+    def compress(self, obj):
+        return zlib.compress(json.dumps(obj).encode("utf-8"))
+
+    def decompress(self, string):
+        return json.loads(zlib.decompress(string))

@@ -23,13 +23,10 @@ class PressdictTests(unittest.TestCase):
         default = object()
         self.assertEqual(pd.get("asdf", default=default), default)
 
-        self.assertEqual(pd.items(), [("test", {"key": "value", "key2": 2})])
-        self.assertEqual(pd.keys(), ["test"])
-        self.assertEqual(pd.values(), [{"key": "value", "key2": 2}])
-
-        self.assertEqual(pd.items(), list(pd.iteritems()))
-        self.assertEqual(pd.keys(), list(pd.iterkeys()))
-        self.assertEqual(pd.values(), list(pd.itervalues()))
+        self.assertEqual(list(pd.items()), [("test", {"key": "value",
+                                                      "key2": 2})])
+        self.assertEqual(list(pd.keys()), ["test"])
+        self.assertEqual(list(pd.values()), [{"key": "value", "key2": 2}])
 
         del pd["test"]
         self.assertTrue("test" not in pd)
